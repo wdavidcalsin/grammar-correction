@@ -1,11 +1,17 @@
 import { Colors } from "@/constants";
 import { useGrammarCorrection } from "@/context";
-import { Box, Button, Stack, Textarea } from "@chakra-ui/react";
+import { Box, Button, Stack, Text, Textarea } from "@chakra-ui/react";
+import * as React from "react";
 
 const TextEntryForm = () => {
   const { customSecondary, textPrimary, customPrimary } = Colors();
-  const { handleChangeEntryText, handleClickCorrect } =
+  const { handleChangeEntryText, handleClickCorrect, setIsLengthTextEntry } =
     useGrammarCorrection().reducerGrammar;
+  const { entryText, isLengthTextEntry } = useGrammarCorrection().textGrammar;
+
+  React.useEffect(() => {
+    setIsLengthTextEntry();
+  }, [entryText]);
 
   return (
     <Stack
@@ -20,12 +26,14 @@ const TextEntryForm = () => {
           resize={"vertical"}
           placeholder="Write the question"
           width={["xs", "md", "lg"]}
+          height={["48"]}
           bgColor={customSecondary}
           color={textPrimary}
           border="none"
           focusBorderColor={customPrimary}
           onChange={handleChangeEntryText}
         />
+        <Text color={isLengthTextEntry ? "green" : "red"}>Min 3 word</Text>
         <Button
           colorScheme={"white"}
           color="white"
@@ -38,6 +46,7 @@ const TextEntryForm = () => {
             opacity: "0.8",
           }}
           onClick={handleClickCorrect}
+          isDisabled={!isLengthTextEntry}
         >
           Correct
         </Button>

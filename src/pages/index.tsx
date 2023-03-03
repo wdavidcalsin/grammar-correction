@@ -1,4 +1,4 @@
-import { TextEntry } from "@/components";
+import { TextEntry, TextOutput } from "@/components";
 import { GrammarCorrectionProvider } from "@/context";
 import { Inter } from "next/font/google";
 import Head from "next/head";
@@ -17,6 +17,7 @@ export default function Home() {
       <main>
         <GrammarCorrectionProvider>
           <TextEntry />
+          <TextOutput />
         </GrammarCorrectionProvider>
       </main>
     </>

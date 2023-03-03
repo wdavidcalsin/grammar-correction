@@ -4,6 +4,7 @@ import {
   IReducerGrammar,
   ITextGrammar,
 } from "@/types";
+import { stringSizeByWords } from "@/utilities";
 import { openaiServices } from "@/web-api";
 import * as React from "react";
 
@@ -20,6 +21,7 @@ export const GrammarCorrectionProvider = ({
   const [textGrammar, setTextGrammar] = React.useState<ITextGrammar>({
     entryText: "",
     outputText: "",
+    isLengthTextEntry: false,
   });
 
   const reducerGrammar: IReducerGrammar = {
@@ -27,16 +29,25 @@ export const GrammarCorrectionProvider = ({
       setTextGrammar((prev) => ({ ...prev, entryText: event.target.value }));
     },
     handleClickCorrect: async () => {
-      if (!textGrammar.entryText) throw new Error("Input value not found.");
+      if (!textGrammar.entryText || textGrammar.isLengthTextEntry == false)
+        return;
 
       const outputGrammar = await openaiServices(textGrammar.entryText);
 
       setTextGrammar((prev) => ({ ...prev, outputText: outputGrammar }));
     },
+    setIsLengthTextEntry: () => {
+      setTextGrammar((prev) => ({
+        ...prev,
+        isLengthTextEntry:
+          stringSizeByWords(prev.entryText) >= 3 ? true : false,
+      }));
+    },
   };
 
   const valueGrammar = {
     textGrammar: textGrammar,
+    setTextGrammar: setTextGrammar,
     reducerGrammar: reducerGrammar,
   };
 

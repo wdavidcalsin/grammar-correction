@@ -16,12 +16,12 @@ export default async function handler(
 
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Correct this to standard English:\n\n${entryText}`,
+    prompt: `Correct this to standard English, no autocomplete:\n\n${entryText}`,
     temperature: 0.3,
     max_tokens: 100,
     top_p: 1.0,
     frequency_penalty: 0.0,
-    presence_penalty: 0.0,
+    presence_penalty: 0,
   });
 
   res.status(200).json(await completion.data.choices[0].text);

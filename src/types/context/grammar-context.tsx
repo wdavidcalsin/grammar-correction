@@ -3,10 +3,12 @@ export interface IReducerGrammar {
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => void;
   handleClickCorrect: () => void;
+  setIsLengthTextEntry: () => void;
 }
 
 export interface ITextGrammar {
   entryText: string;
+  isLengthTextEntry: boolean;
   outputText: string;
 }
 
