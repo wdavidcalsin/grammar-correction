@@ -1,5 +1,8 @@
+import { formatText } from "@/utilities";
 import { openaiRequest } from "../request";
 
-export const openaiSer5vices = async (entryText: string) => {
-  return await openaiRequest(entryText);
+export const openaiServices = async (entryText: string) => {
+  const outputText = await openaiRequest(entryText);
+  
+  return formatText(outputText);
 };

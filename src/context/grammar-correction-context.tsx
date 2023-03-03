@@ -1,5 +1,10 @@
 import { GrammarCorrectionModel } from "@/model";
-import { IGrammarCorrectionContext, ITextGrammar } from "@/types";
+import {
+  IGrammarCorrectionContext,
+  IReducerGrammar,
+  ITextGrammar,
+} from "@/types";
+import { openaiServices } from "@/web-api";
 import * as React from "react";
 
 interface PropsGrammarCorrection {
@@ -17,9 +22,17 @@ export const GrammarCorrectionProvider = ({
     outputText: "",
   });
 
-  const reducerGrammar = {
-    handleChangeEntryText: () => null,
-    handleClickCorrect: () => null,
+  const reducerGrammar: IReducerGrammar = {
+    handleChangeEntryText: (event) => {
+      setTextGrammar((prev) => ({ ...prev, entryText: event.target.value }));
+    },
+    handleClickCorrect: async () => {
+      if (!textGrammar.entryText) throw new Error("Input value not found.");
+
+      const outputGrammar = await openaiServices(textGrammar.entryText);
+
+      setTextGrammar((prev) => ({ ...prev, outputText: outputGrammar }));
+    },
   };
 
   const valueGrammar = {

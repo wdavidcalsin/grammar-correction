@@ -3,7 +3,7 @@ import { Button, Heading, Stack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 
-const SearchTitle = () => {
+const TextEntryTitle = () => {
   const { customPrimary, txtSecondary } = Colors();
 
   return (
@@ -36,4 +36,4 @@ const SearchTitle = () => {
   );
 };
 
-export default SearchTitle;
+export default TextEntryTitle;

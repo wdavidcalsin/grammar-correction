@@ -1,17 +1,11 @@
 import { Colors } from "@/constants";
-import {
-  Box,
-  Button,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Stack,
-  Textarea,
-} from "@chakra-ui/react";
-import { BiSearchAlt } from "react-icons/bi";
+import { useGrammarCorrection } from "@/context";
+import { Box, Button, Stack, Textarea } from "@chakra-ui/react";
 
-const SearchForm = () => {
+const TextEntryForm = () => {
   const { customSecondary, textPrimary, customPrimary } = Colors();
+  const { handleChangeEntryText, handleClickCorrect } =
+    useGrammarCorrection().reducerGrammar;
 
   return (
     <Stack
@@ -30,6 +24,7 @@ const SearchForm = () => {
           color={textPrimary}
           border="none"
           focusBorderColor={customPrimary}
+          onChange={handleChangeEntryText}
         />
         <Button
           colorScheme={"white"}
@@ -42,12 +37,13 @@ const SearchForm = () => {
           _hover={{
             opacity: "0.8",
           }}
+          onClick={handleClickCorrect}
         >
-         Correct
+          Correct
         </Button>
       </Box>
     </Stack>
   );
 };
 
-export default SearchForm;
+export default TextEntryForm;

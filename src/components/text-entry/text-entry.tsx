@@ -1,13 +1,13 @@
-import { MainContainer, SearchForm, SearchTitle } from "@/sub-components";
+import { MainContainer, TextEntryTitle } from "@/sub-components";
+import TextEntryForm from "@/sub-components/text-entry/text-entry-form";
 import { Box } from "@chakra-ui/react";
-import * as React from "react";
 
 const TextEntry = () => {
   return (
     <Box>
       <MainContainer>
-        <SearchTitle />
-        <SearchForm />
+        <TextEntryTitle />
+        <TextEntryForm />
       </MainContainer>
     </Box>
   );

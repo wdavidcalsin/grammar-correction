@@ -12,6 +12,7 @@ specifiers:
   eslint: 8.35.0
   eslint-config-next: 13.2.3
   framer-motion: ^10.0.1
+  husky: ^8.0.0
   next: 13.2.3
   openai: ^3.2.1
   react: 18.2.0
@@ -37,6 +38,9 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
   typescript: 4.9.5
+
+devDependencies:
+  husky: 8.0.3
 
 packages:
 
@@ -2702,6 +2706,12 @@ packages:
     dependencies:
       react-is: 16.13.1
     dev: false
+
+  /husky/8.0.3:
+    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
 
   /ignore/5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}

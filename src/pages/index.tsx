@@ -1,4 +1,5 @@
 import { TextEntry } from "@/components";
+import { GrammarCorrectionProvider } from "@/context";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 
@@ -14,7 +15,9 @@ export default function Home() {
         <link rel="icon" href="/grammar-correction.png" />
       </Head>
       <main>
-        <TextEntry />
+        <GrammarCorrectionProvider>
+          <TextEntry />
+        </GrammarCorrectionProvider>
       </main>
     </>
   );

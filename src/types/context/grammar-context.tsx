@@ -1,5 +1,8 @@
 export interface IReducerGrammar {
-  handleChangeEntryText: () => void;
+  handleChangeEntryText: (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => void;
+  handleClickCorrect: () => void;
 }
 
 export interface ITextGrammar {
