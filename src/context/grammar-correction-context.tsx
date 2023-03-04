@@ -1,4 +1,4 @@
-import { GrammarCorrectionModel } from "@/model";
+import { GrammarCorrectionModel, textGrammarModel } from "@/model";
 import {
   IGrammarCorrectionContext,
   IReducerGrammar,
@@ -18,14 +18,12 @@ export const GrammarCorrectionContext =
 export const GrammarCorrectionProvider = ({
   children,
 }: PropsGrammarCorrection) => {
-  const [textGrammar, setTextGrammar] = React.useState<ITextGrammar>({
-    entryText: "",
-    outputText: "",
-    isLengthTextEntry: false,
-  });
+  const [textGrammar, setTextGrammar] =
+    React.useState<ITextGrammar>(textGrammarModel);
 
   const reducerGrammar: IReducerGrammar = {
     handleChangeEntryText: (event) => {
+      console.log("handleChangeEntryText is run...");
       setTextGrammar((prev) => ({ ...prev, entryText: event.target.value }));
     },
     handleClickCorrect: async () => {
@@ -34,16 +32,20 @@ export const GrammarCorrectionProvider = ({
 
       const outputGrammar = await openaiServices(textGrammar.entryText);
 
+      console.log("handleClickCorrect is run...");
       setTextGrammar((prev) => ({ ...prev, outputText: outputGrammar }));
     },
-    setIsLengthTextEntry: () => {
+    setIsLengthTextEntry: React.useCallback(() => {
+      console.log("SetIsLengthTextEntry is run...");
       setTextGrammar((prev) => ({
         ...prev,
         isLengthTextEntry:
           stringSizeByWords(prev.entryText) >= 3 ? true : false,
       }));
-    },
+    }, []),
   };
+
+  console.log("GrammarProvider is run...");
 
   const valueGrammar = {
     textGrammar: textGrammar,

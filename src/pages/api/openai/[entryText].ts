@@ -23,6 +23,7 @@ export default async function handler(
     frequency_penalty: 0.0,
     presence_penalty: 0,
   });
+  console.log("Openai is run...");
 
   res.status(200).json(await completion.data.choices[0].text);
 }
