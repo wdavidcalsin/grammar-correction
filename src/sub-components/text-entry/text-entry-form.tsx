@@ -1,10 +1,10 @@
-import { Colors } from "@/constants";
+import { useColors } from "@/constants";
 import { useGrammarCorrection } from "@/context";
 import { Box, Button, Stack, Text, Textarea } from "@chakra-ui/react";
 import * as React from "react";
 
 const TextEntryForm = () => {
-  const { customSecondary, textPrimary, customPrimary } = Colors();
+  const { customSecondary, textPrimary, customPrimary } = useColors();
   const { handleChangeEntryText, handleClickCorrect, setIsLengthTextEntry } =
     useGrammarCorrection().reducerGrammar;
   const { entryText, isLengthTextEntry } = useGrammarCorrection().textGrammar;
@@ -13,6 +13,8 @@ const TextEntryForm = () => {
     setIsLengthTextEntry();
     console.log("UseEffect is run...");
   }, [entryText, setIsLengthTextEntry]);
+
+  console.log("UseEffect is run...");
 
   return (
     <Stack

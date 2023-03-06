@@ -1,6 +1,6 @@
 import { useColorModeValue } from "@chakra-ui/react";
 
-export const Colors = () => {
+export const useColors = () => {
   const bgPrimary = useColorModeValue("#FFFFFF", "#1B1B1E");
   const bgSecondary = useColorModeValue("#FFFFFF", "#27272A");
   const textPrimary = useColorModeValue("#1B1B1E", "#FFFFFF");

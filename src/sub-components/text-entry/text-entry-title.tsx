@@ -1,10 +1,10 @@
-import { Colors } from "@/constants";
+import { useColors } from "@/constants";
 import { Button, Heading, Stack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 
 const TextEntryTitle = () => {
-  const { customPrimary, txtSecondary } = Colors();
+  const { customPrimary, txtSecondary } = useColors();
 
   return (
     <Stack spacing={"3"} display={"grid"} placeItems="center">

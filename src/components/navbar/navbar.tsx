@@ -1,14 +1,12 @@
-import { Colors } from "@/constants";
-import { MainContainer } from "@/sub-components";
-import {
-  Box,
-  Button, Heading, useColorMode
-} from "@chakra-ui/react";
+import { Box, Button, Heading, useColorMode } from "@chakra-ui/react";
 import { BiMoon, BiSun } from "react-icons/bi";
+import { useColors } from "@/constants";
+import { MainContainer } from "@/sub-components";
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { bgPrimary, customSecondary, textPrimary, customPrimary } = Colors();
+  const { bgPrimary, customSecondary, textPrimary, customPrimary } =
+    useColors();
 
   return (
     <Box
@@ -23,7 +21,13 @@ const Navbar = () => {
         justifyContent="space-between"
         height="5rem"
       >
-        <Heading color={textPrimary} fontSize="1.5rem" fontWeight={"light"} as='a' href="/">
+        <Heading
+          color={textPrimary}
+          fontSize="1.5rem"
+          fontWeight={"light"}
+          as="a"
+          href="/"
+        >
           Grammar Correction
         </Heading>
 

@@ -1,4 +1,4 @@
-import { Colors } from "@/constants";
+import { useColors } from "@/constants";
 import { Box } from "@chakra-ui/react";
 import * as React from "react";
 import { Navbar } from "../navbar";
@@ -8,7 +8,7 @@ interface PropLayout {
 }
 
 const Layout = ({ children }: PropLayout) => {
-  const { bgSecondary } = Colors();
+  const { bgSecondary } = useColors();
 
   return (
     <Box minHeight="100vh" bgColor={bgSecondary}>
