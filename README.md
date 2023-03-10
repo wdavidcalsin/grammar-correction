@@ -9,7 +9,7 @@
 - [🇪🇸 Spanish](./README.es.md)
 - 🇺🇸 English
 
-**Grammar Correction Project :** This project is licensed under the MIT License.
+**Grammar Correction Project :** This application uses natural language processing technology for proofreading, and developed with Next.js, TypeScript and Volta.
 
 ## Description
 
