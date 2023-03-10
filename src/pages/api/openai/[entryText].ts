@@ -1,20 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Configuration, OpenAIApi } from "openai";
 
-console.log("Openai 1111");
-
-const API_KEY = "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";
+const API_KEY = process.env.API_KEY_NOTION;
 
 const configuration = new Configuration({
   apiKey: API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
-console.log("Openai 2222");
-
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log("Openai 3333");
-
   const entryText = req.query.entryText;
 
   const completion = await openai.createCompletion({
@@ -26,8 +20,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     frequency_penalty: 0.0,
     presence_penalty: 0,
   });
-
-  console.log("Openai is run...");
 
   res.status(200).json(completion.data.choices[0].text);
 }

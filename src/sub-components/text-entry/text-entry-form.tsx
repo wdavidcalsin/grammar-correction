@@ -11,10 +11,7 @@ const TextEntryForm = () => {
 
   React.useEffect(() => {
     setIsLengthTextEntry();
-    console.log("UseEffect is run...");
   }, [entryText, setIsLengthTextEntry]);
-
-  console.log("UseEffect is run...");
 
   return (
     <Stack

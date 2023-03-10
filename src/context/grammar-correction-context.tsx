@@ -23,7 +23,6 @@ export const GrammarCorrectionProvider = ({
 
   const reducerGrammar: IReducerGrammar = {
     handleChangeEntryText: (event) => {
-      console.log("handleChangeEntryText is run...");
       setTextGrammar((prev) => ({ ...prev, entryText: event.target.value }));
     },
     handleClickCorrect: async () => {
@@ -32,11 +31,9 @@ export const GrammarCorrectionProvider = ({
 
       const outputGrammar = await openaiServices(textGrammar.entryText);
 
-      console.log("handleClickCorrect is run...");
       setTextGrammar((prev) => ({ ...prev, outputText: outputGrammar }));
     },
     setIsLengthTextEntry: React.useCallback(() => {
-      console.log("SetIsLengthTextEntry is run...");
       setTextGrammar((prev) => ({
         ...prev,
         isLengthTextEntry:
@@ -44,8 +41,6 @@ export const GrammarCorrectionProvider = ({
       }));
     }, []),
   };
-
-  console.log("GrammarProvider is run...");
 
   const valueGrammar = {
     textGrammar: textGrammar,
