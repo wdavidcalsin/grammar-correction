@@ -10,6 +10,7 @@ export interface ITextGrammar {
   entryText: string;
   isLengthTextEntry: boolean;
   outputText: string;
+  isLoadingMessage: boolean;
 }
 
 export interface IGrammarCorrectionContext {

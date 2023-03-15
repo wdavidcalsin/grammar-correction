@@ -38,8 +38,8 @@ const TextOutputContent = () => {
         </Heading>
         <Box
           bg={"rgba(0,0,0,.1)"}
-          py="1rem"
-          px={"0.5rem"}
+          py="1.8rem"
+          px={"1.5rem"}
           borderRadius=".5rem"
           position={"relative"}
         >

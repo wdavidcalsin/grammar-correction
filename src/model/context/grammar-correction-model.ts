@@ -3,8 +3,8 @@ import { IGrammarCorrectionContext, ITextGrammar } from "@/types";
 export const textGrammarModel: ITextGrammar = {
   entryText: "",
   outputText: "",
-  isLengthTextEntry: false
-
+  isLengthTextEntry: false,
+  isLoadingMessage: false,
 };
 
 export const GrammarCorrectionModel: IGrammarCorrectionContext = {

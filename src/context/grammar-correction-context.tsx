@@ -26,12 +26,14 @@ export const GrammarCorrectionProvider = ({
       setTextGrammar((prev) => ({ ...prev, entryText: event.target.value }));
     },
     handleClickCorrect: async () => {
+      setTextGrammar((prev) => ({ ...prev, isLoadingMessage: true }));
       if (!textGrammar.entryText || textGrammar.isLengthTextEntry == false)
         return;
 
       const outputGrammar = await openaiServices(textGrammar.entryText);
 
       setTextGrammar((prev) => ({ ...prev, outputText: outputGrammar }));
+      setTextGrammar((prev) => ({ ...prev, isLoadingMessage: false }));
     },
     setIsLengthTextEntry: React.useCallback(() => {
       setTextGrammar((prev) => ({
