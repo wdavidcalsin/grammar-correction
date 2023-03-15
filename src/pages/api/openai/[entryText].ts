@@ -1,11 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Configuration, OpenAIApi } from "openai";
 
-const API_KEY = process.env.API_KEY_NOTION;
+const { OPENAI_API_KEY } = process.env;
 
 const configuration = new Configuration({
-  apiKey: API_KEY,
+  apiKey: OPENAI_API_KEY,
 });
+
 const openai = new OpenAIApi(configuration);
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -20,6 +21,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     frequency_penalty: 0.0,
     presence_penalty: 0,
   });
+
+  if (!completion) {
+    console.log("The query was incorrect and there was no response.");
+    return res.status(400).closed;
+  }
 
   res.status(200).json(completion.data.choices[0].text);
 }
